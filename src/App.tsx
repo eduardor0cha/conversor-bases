@@ -47,7 +47,7 @@ function App() {
         <div className="p-home__card">
           <h1>Conversor de bases</h1>
           <div className="p-home__number-inputs">
-            <Input label="Número" required name="number" />
+            <Input label="Número" required name="number" className="p-home__number-inputs__number" />
             <Input label="Base" type="number" name="originBase" min={2} max={36} required className="p-home__number-inputs__base" />
           </div>
           <Input label="Base de destino" type="number" name="destinationBase" min={2} required max={36} className="p-home__destination-base" />
