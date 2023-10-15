@@ -4,6 +4,8 @@ export function checkNumber(n: string, base: number): null | string {
   const number = n.toUpperCase().trim().replace(",", ".")
 
   if (number.indexOf(".") !== number.lastIndexOf(".")) return "Há mais de um ponto flutuante."
+  if (number.indexOf(".") === 0) return "Não possui números antes o ponto flutuante."
+  if (number.indexOf(".") === number.length - 1) return "Não possui números após o ponto flutuante."
   if (number.indexOf("-") !== number.lastIndexOf("-")) return "Há mais de um sinal negativo."
   if (number.indexOf("-") > 0) return "O sinal negativo está fora do lugar"
 
@@ -31,7 +33,7 @@ function convertToDecimal(n: string, base: number): number {
     decimalValue += digitValue * (base ** i)
   }
 
-  if (number.indexOf(".") === -1 || number.indexOf(".") === (number.length - 1)) return isNegative ? decimalValue * -1 : decimalValue;
+  if (number.indexOf(".") === -1) return isNegative ? decimalValue * -1 : decimalValue;
 
   const floatPart = number.split(".")[1]
 
