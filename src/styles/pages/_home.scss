@@ -36,4 +36,27 @@
       width: 80px;
     }
   }
+
+  &__error-container,
+  &__result-container {
+    border-top: 1px solid #A3A3A3;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-weight: bold;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    span {
+      font-size: 0.75rem;
+      font-weight: initial;
+    }
+  }
+
+  &__error-container {
+    color: #D51616;
+  }
 }
