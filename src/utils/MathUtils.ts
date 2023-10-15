@@ -31,13 +31,7 @@ function convertToDecimal(n: string, base: number): number {
     decimalValue += digitValue * (base ** i)
   }
 
-  if (number.indexOf(".") === -1 || number.indexOf(".") === (number.length - 1)) {
-    if (isNegative) {
-      return decimalValue * -1
-    } else {
-      return decimalValue
-    }
-  }
+  if (number.indexOf(".") === -1 || number.indexOf(".") === (number.length - 1)) return isNegative ? decimalValue * -1 : decimalValue;
 
   const floatPart = number.split(".")[1]
 
@@ -46,17 +40,13 @@ function convertToDecimal(n: string, base: number): number {
     decimalValue += digitValue / (base ** (i + 1))
   }
 
-  if (isNegative) {
-    return decimalValue * -1
-  } else {
-    return decimalValue
-  }
+  return isNegative ? decimalValue * -1 : decimalValue;
 }
 
 function convertFromDecimal(n: number, base: number): string {
   let number = n
   let isNegative = false;
-  if (n < 0) {
+  if (number < 0) {
     isNegative = true
     number *= -1
   }
@@ -66,7 +56,6 @@ function convertFromDecimal(n: number, base: number): string {
   let convertedValue = ""
 
   let aux = integerPart
-
   while (true) {
     convertedValue = FROM_DECIMAL[(aux % base)] + convertedValue
 
@@ -76,9 +65,7 @@ function convertFromDecimal(n: number, base: number): string {
     }
   }
 
-  if (isNegative) {
-    convertedValue = "-" + convertedValue
-  }
+  if (isNegative) convertedValue = "-" + convertedValue
 
   if (Math.trunc(number) === number) return convertedValue
 
@@ -86,7 +73,6 @@ function convertFromDecimal(n: number, base: number): string {
 
   let convertedFloatPart = ""
   let aux2 = floatPart
-
   while (convertedFloatPart.length < 16) {
     aux2 *= base
 
